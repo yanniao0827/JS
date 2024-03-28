@@ -55,3 +55,5 @@ switch (date) {
         console.log('無效的數字');
         break;
 }
+
+123
