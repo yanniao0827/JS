@@ -61,11 +61,10 @@ switch (date) {
 }
 
 小試5
-let n = 10;
 let counter = 1;
 let sum = 0;
 
-while (counter <= n) {
+while (counter <= 10) {
     sum = sum + counter;
     counter++;
 }
@@ -101,11 +100,15 @@ console.log(list);
 console.log(list.length);
 
 小試9
+// 1.設定矩陣
 let numbers = [3, 10, 13];
-
+// 2.要分別取得矩陣中的三個值，因為矩陣位置是從0開始，因此初始值設定為0，numbers.length指取完整個矩陣長度，第0位是3，第1位是10，第2位是13，
 for (let index = 0; index < numbers.length; index++) {
+    // 3.index 0 代表矩陣第一個值3，此時n就等於3，index 1就等於10依此類推
     let n = numbers[index];
+    // 4.這裡開始要計算要計算從1開始不斷相加的值
     let sum = 0;
+    // 5.counter會持續變動，這裡的n是上面的for迴圈所取矩陣中特定位置的值，
     for (let counter = 1; counter <= n; counter++) {
         sum = sum + counter;
     }
@@ -143,6 +146,8 @@ function countPapaya(fruits) {
 }
 
 // 2.建立一個陣列
-let result = countPapaya(['Orange', 'Apple', 'Papaya', 'Kiwi', 'Papaya']);
+countPapaya(['Orange', 'Apple', 'Papaya', 'Kiwi', 'Papaya']);
 // 7.列出結果
 console.log(result);
+
+0328打卡
