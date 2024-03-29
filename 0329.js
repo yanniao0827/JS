@@ -125,3 +125,17 @@ const getRealprice = (price, discount = 0.2) => price * (1 - discount);
 
 console.log(getRealprice(100));
 console.log(getRealprice(100, 0.3))
+
+小試6
+let string = "Visit my blogs http://blog1.com and https://blog2.com for more info.";
+string = string.replaceAll('http://', '');
+string = string.replaceAll('https://', '');
+
+array = string.split(' ');
+
+for (item of array) {
+    if (item.endsWith('.com')) {
+        console.log(item.repeat(3));
+    }
+}
+
