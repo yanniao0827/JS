@@ -71,4 +71,57 @@ for (let fruit of products) {
     }
 }
 
+// Rest & Spread Operation
+function printNumbers(...numbers) {
+    console.log(numbers);
+}
+printNumbers(1, 2, 3, 4);
+
+function printNumbers2(number1, number2, number3) {
+    console.log(number1);
+    console.log(number2);
+    console.log(number3);
+}
+printNumbers2(...[1, 2, 3]);
+
+
 小試4
+// 1.使用rest operator讓函式資料成為陣列
+function findMax(...numbers) {
+    // 2.因為要找出最大值，把比較值設定為0
+    let result = 0;
+    // 3.在這個for迴圈中會逐一列出矩陣的資料
+    for (number of numbers) {
+        // 3.比較陣列內的資料，如果比result大，就讓該資料成為新的result
+        if (number > result) {
+            result = number;
+        }
+        // 第一輪比較:1>0，1成為新的result
+        // 第二輪比較:2>1，2成為新的result
+        // 第三輪比較:5>2，5成為新的result
+        // 第四輪比較:4<5，5依舊是result
+    }
+    // 最後比較完成後把最終的result值5回傳
+    return result;
+}
+
+console.log(findMax(1, 2, 5, 4));
+console.log(findMax(1, 10, 7));
+console.log(findMax(1, 5, 9, 0));
+
+小試5
+// 1.原本的函式
+function getRealprice(price, discount = 0.2) {
+    return price * (1 - discount);
+}
+
+//2.函式表達式，將函式名稱getRealprice前移
+const getRealprice = function (price, discount = 0.2) {
+    return price * (1 - discount);
+}
+
+//3.箭頭函式，把function拿掉，並把{rerurn}簡化成=>
+const getRealprice = (price, discount = 0.2) => price * (1 - discount);
+
+console.log(getRealprice(100));
+console.log(getRealprice(100, 0.3))
