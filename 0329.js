@@ -70,3 +70,5 @@ for (let fruit of products) {
         break;
     }
 }
+
+小試4
