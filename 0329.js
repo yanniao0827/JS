@@ -139,3 +139,44 @@ for (item of array) {
     }
 }
 
+小試身手作業
+let person={
+    name:['野原新之助'],
+    age:5,
+    hobbies:['drawings','coding','reading','swimming','skating','running'],
+    getInfo: function () {
+          console.log(`我是${person.name}，今年${person.age}歲`);
+      }
+  }
+  
+  
+  // 使用for of
+  // for(let hobby of person.hobbies){
+  //   if( hobby === "coding"){
+  //     continue;
+  //   } if(hobby === person.hobbies[4]){
+  //     break;
+  //   }
+  //   console.log(hobby);
+  // };
+  
+  // 遇到hobby是coding的時候停止
+  // for(let hobby of person.hobbies){
+  //   if( hobby === "coding"){
+  //     continue;
+  //   }
+  //   console.log(hobby);
+  // };
+  
+  // 使用for in
+  // for(let key in person){
+  //    console.log(`${key}:${person[key]}`); }
+  
+  // 如果大於18回傳true
+  // let isAdult=`${person.age}`>=18? true:false;
+  // console.log(isAdult);
+  
+  // 使用getInfo作介紹
+  // console.log(person.getInfo())
+  
+  
