@@ -12,6 +12,7 @@ let person = {
     printPerson: function () {
         // 因為要列出整筆資料的時候不希望列出整個function，所以for in在跑資料的時候遇到function就跳過
         for (let key in person) {
+            // typeof是用來檢驗物件中的資料代表什麼屬性，如isAdult就是function屬性
             if (typeof person[key] === 'function') {
                 continue;
             }
@@ -36,8 +37,8 @@ let person = {
     }
 }
 
-// console.log(person.getInfo());
-// console.log(person.isAdult());
+console.log(person.getInfo());
+console.log(person.isAdult());
 person.printPerson();
 
 小試1
