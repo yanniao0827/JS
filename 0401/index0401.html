@@ -1,0 +1,7 @@
+<script>
+    window.alert('welcome!');
+    let answer = window.confirm('要開啟另外的頁面嗎?');
+    let tab = window.open('http://127.0.0.1:5500/index0401-2.html');
+    setTimeout(() => tab.close('http://127.0.0.1:5500/index0401-2.html'), 3000);
+    setInterval(() => console.log(new Date(), 2000));
+</script>
