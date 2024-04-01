@@ -134,3 +134,4 @@ function getLuckyNumber2(min = 20, max = 46) {
 
 console.log(getLuckyNumber2(1.44, 3.89));
 
+123
