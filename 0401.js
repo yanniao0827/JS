@@ -54,3 +54,25 @@ inviteList = inviteList.join(',');
 //如果不想輸入太多行，可以直接用.來連接
 // inviteList = inviteList.reverse().join(',');
 console.log(inviteList);
+
+小試2
+let numbers = [-5, 2, -8, 12, 15];
+
+let max = Math.max(...numbers);
+let min = Math.min(...numbers);
+
+// 1.建立一個空白新陣列
+let absNumbers = [];
+// 2.對numbers陣列使用取絕對值，取完後push到剛建立的空白陣列absNumber中
+for (let number of numbers) {
+    absNumbers.push(Math.abs(number));
+}
+// 3.從新陣列absNumbers中取最大值
+let maxAbs = Math.max(...absNumbers);
+
+let powerNumber = Math.sqrt(Math.pow(2, 6));
+let ceil = Math.ceil(-5.7);
+let floor = Math.floor(15.2);
+let round = Math.round(12.4)
+
+console.log(max + min + maxAbs + powerNumber + ceil + floor + round);
