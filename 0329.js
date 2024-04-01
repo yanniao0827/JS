@@ -174,7 +174,6 @@ let person={
         }
     }
 }
-  }
   
   
   // 使用for of

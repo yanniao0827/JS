@@ -134,4 +134,31 @@ function getLuckyNumber2(min = 20, max = 46) {
 
 console.log(getLuckyNumber2(1.44, 3.89));
 
-小試4(在index中)
+小試4(index0401)
+//<script>
+//     window.alert('welcome!');
+// let answer = window.confirm('要開啟另外的頁面嗎?');
+// if (answer) {
+//     const tab = window.open('index0401-test.html');
+//     setTimeout(() => tab.close(), 3000);
+// }
+// setInterval(() => console.log(new Date(), 2000));
+//</script >
+
+小試5(myElement)
+// <!-- <body>
+//     <div id="myElement" class="active" test="test">
+//         Hello World
+//     </div>
+//     <script>
+//         myElement.innerText = "Hello JavaScript";
+//         myElement.classList.remove('active');
+//         myElement.style.backgroundColor = "green";
+
+//         window.alert(myElement.getAttribute('test'));
+
+//         const answer = window.prompt('你要輸入的類型?');
+//         myElement.classList.add(answer);
+
+//     </script>
+// </body> -->
