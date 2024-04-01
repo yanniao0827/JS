@@ -145,8 +145,35 @@ let person={
     age:5,
     hobbies:['drawings','coding','reading','swimming','skating','running'],
     getInfo: function () {
-          console.log(`我是${person.name}，今年${person.age}歲`);
-      }
+        return `我是${person.name}，今年${person.age}歲` 
+      },
+    isAdult: function(){=`${person.age}`>=18? true:false;},
+    printPerson: function () {
+        // 因為要列出整筆資料的時候不希望列出整個function，所以for in在跑資料的時候遇到function就跳過
+        for (let key in person) {
+            if (typeof person[key] === 'function') {
+                continue;
+            }
+
+            if (key === 'hobbies') {
+                let count = 1;
+                for (let hobby of person['hobbies']) {
+                    if (hobby === 'coding') {
+                        continue;
+                    }
+
+                    console.log(`hobby: ${hobby}`);
+                    count++;
+                    if (count === 5) {
+                        break;
+                    }
+                }
+            } else {
+                console.log(`${key}: ${person[key]}`);
+            }
+        }
+    }
+}
   }
   
   
@@ -178,5 +205,4 @@ let person={
   
   // 使用getInfo作介紹
   // console.log(person.getInfo())
-  
   
