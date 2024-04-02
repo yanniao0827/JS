@@ -1,0 +1,81 @@
+<div>
+    <input type="text" id="display" disabled />
+    <br>
+    <button class="number">1</button>
+    <button class="number">2</button>
+    <button class="number">3</button>
+    <button class="number">4</button>
+    <button class="number">5</button>
+    <button class="number">6</button>
+    <button class="number">7</button>
+    <button class="number">8</button>
+    <button class="number">9</button>
+    <button class="number">0</button>
+    <br>
+    <button class="operator">+</button>
+    <button class="operator">-</button>
+    <button class="operator">*</button>
+    <button class="operator">/</button>
+    <button id="reset">Reset</button>
+    <button id="equals">=</button>
+</div>
+
+<script>
+    //4. 會有3個部分:第一個輸入的數字、運算符號、第二個輸入的數字，把個都先設定成空白
+    let firstNum = '';
+    let secondNum = '';
+    let operator = '';
+
+    // 1.將所有class名稱是number的，將它們組合成numberButtons
+    const numberButtons = document.querySelectorAll('.number');
+    // 2.讓for迴圈實現在我們點擊數字鍵的時候將裡面的文字以字串的方式串接
+    for (let button of numberButtons) {
+        button.addEventListener('click', function () {
+            // 5.判斷如果使用者點擊了運算符號(operator非空白)就設定第二個數字，如果沒有點擊就還是設定第一個數字，+this.innerText可以實現多個數字以字串表示，最後將輸入的數字字串回傳display.value
+            if (operator === '') {
+                firstNum = firstNum + this.innerText;
+                display.value = firstNum;
+            } else {
+                secondNum = secondNum + this.innerText;
+                display.value = secondNum;
+            }
+        });
+
+    }
+
+    // 3.將所有class名稱是operator的，將它們組合成operatorButtons
+    const operatorButtons = document.querySelectorAll('.operator');
+    for (let button of operatorButtons) {
+        button.addEventListener('click', function () {
+            // 4.如果firstNum以設定(非空白)且第二個數字仍為空白，就把operator的innerText列出
+            if (firstNum !== '' && secondNum === '') {
+                operator = this.innerText;
+            }
+        })
+    }
+
+    // 6.設定等於，但需要先將兩個數字的字串使用parseInt轉成數字才能運算，設定一個result=0，最後將運算的結果回傳至result
+    equals.addEventListener('click', function () {
+        let result = 0;
+        firstNum = parseInt(firstNum);
+        secondNum = parseInt(secondNum);
+        if (operator === '+') {
+            result = firstNum + secondNum;
+        } else if (operator === '-') {
+            result = firstNum - secondNum;
+        } else if (operator === '*') {
+            result = firstNum * secondNum;
+        } else if (operator === '/') {
+            result = firstNum / secondNum;
+        };
+        display.value = result;
+    });
+
+    // 7.設定重製，將所有結果都變成空白
+    reset.addEventListener('click', function () {
+        firstNum = '';
+        secondNum = '';
+        operator = '';
+        display.value = '';
+    });
+</script>
