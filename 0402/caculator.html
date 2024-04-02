@@ -68,7 +68,8 @@
         } else if (operator === '/') {
             result = firstNum / secondNum;
         };
-        display.value = result;
+        // 18.因為製作了千分位符號的函式，所以最終要顯示在display.value上面的結果要是經過千分位函式計算後回傳的值
+        display.value = makeItBetter(result);
     });
 
     // 7.設定重製，將所有結果都變成空白
@@ -78,4 +79,36 @@
         operator = '';
         display.value = '';
     });
+
+    // 8.製作千分位符號
+    function makeItBetter(result) {
+        // 9.將得到的計算結果從數字轉為字串
+        result = result.toString();
+        // 10.再從字串轉成陣列
+        let array = result.split(''); //'2570' => [2,5,7,0]
+        // 11.將陣列反轉
+        array = array.reverse();
+
+        // 12.新增空白陣列方便之後回傳
+        let newResult = [];
+        // 13.使用for迴圈，讓陣列在每三格數字後面加上,
+        for (let index = 0; index < array.length; index++) {
+            if (index > 0 && index % 3 === 0) {
+                newResult.push(',');
+            }
+            // 14.把結果回傳至空白陣列
+            newResult.push(array[index]);
+            // [0] -> index => 0
+            // [0,7] -> index => 1
+            // [0,7,5] -> index => 2
+            // [0,7,5,',']   -> index => 3
+            // [0,7,5,',',2] -> index => 3
+        }
+        // 15.新陣列在反轉成原本的數字順序
+        newResult = newResult.reverse(); // [0,7,5,',',2] -> [2,',',5,7,0]
+        // 16.新陣列內容轉成字串
+        newResult = newResult.join(''); // [2,',',5,7,0] -> '2,570'
+        // 17.將最後生成的字串作為此函式的回傳值
+        return newResult;
+    }
 </script>
