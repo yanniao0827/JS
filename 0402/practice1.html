@@ -1,0 +1,27 @@
+<h1 id="userName">多拉D夢</h1>
+<p id="userText" class="small">
+    我是想要變大的字
+</p>
+<button id="sayButton">點我</button>
+<!-- type="number"讓originNum只能輸入數字 -->
+<input id="originNum" type="number">
+<input id="resultNum" disabled>
+
+<script>
+    userName.innerText = '多拉Y夢';
+    userText.className = 'big';
+    sayButton.addEventListener('click', function () {
+        alert('你好');
+    })
+
+    originNum.addEventListener('input', function () {
+        resultNum.value = Math.pow(originNum.value, 2);
+    })
+
+    const buttons = document.querySelectorAll('input');
+    for (let button of buttons) {
+        button.addEventListener('click', function () {
+            window.alert('你點到我了');   // 記得取消 input 的 disabled 狀態
+        })
+    }
+</script>
