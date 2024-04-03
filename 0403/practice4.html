@@ -1,0 +1,55 @@
+<body>
+    <h2>Create a New Post</h2>
+    <form id="articleForm">
+
+        Title: <input type="text" name="title" id="title">
+        <p id="titleError" style="color: red"></p>
+
+        Content: <textarea type="text" name="content" id="content"></textarea>
+        <p id="contentError" style="color: red"></p>
+
+        Author Email: <input type="text" name="email" id="email">
+        <p id="emailError" style="color: red"></p>
+
+        Creation Date: <input type="date" name="datetime" id="datetime">
+        <p id="datetimeError" style="color: red"></p>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+
+<script>
+    articleForm.addEventListener('submit', function () {
+        event.preventDefault();
+        const formTitle = title.value;
+        const formContent = content.value;
+        const formEmail = email.value;
+        const formDate = new Date(datetime.value);
+
+        titleError.innerText = '';
+        contentError.innerText = '';
+        emailError.innerText = '';
+        datetimeError.innertext = '';
+
+        if (formTitle !== formTitle.toUpperCase()) {
+            titleError.innerText = '請全部都大寫'
+            return;
+        }
+        if (formContent.length > 50) {
+            contentError.innerText = '內容限制50字';
+            return;
+        }
+        let atPosition = formEmail.indexOf('@');
+        if (atPosition <= 0 || atPosition === formEmail.length - 1) {
+            emailError.innerText = '請輸入正確 email格式';
+            return;
+        }
+        if (formDate > new Date()) {
+            contentError.innerText = '發布日期不能大於今日日期';
+            return;
+        }
+
+        window.alert('送出資料');
+    })
+
+</script>

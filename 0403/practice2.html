@@ -1,0 +1,20 @@
+<textarea name="" id="textArea" cols="30" rows="10"></textarea>
+<button id="trans">轉換</button>
+
+<script>
+    trans.addEventListener('click', function () {
+        if (textArea.value === '') {
+            window.alert('請輸入內容')
+            // 如果觸發請輸入內容的alert，就跳出if，表示方式為return後面留白
+            return;
+        }
+        try {
+            // 這裡的轉換可能出現錯誤，如果今天使用者輸入的內容有可能不是JSON格式，這樣會無法轉換，這時會跳出window alert告訴使用者格式錯誤
+            const jsonObj = JSON.parse(textArea.value);
+            console.log(jsonObj);
+        } catch (error) {
+            window.alert('格式錯誤')
+        }
+    })
+
+</script>
