@@ -20,11 +20,14 @@
 <button id="clearAllBtn">清除全部</button>
 
 <script>
-    addTaskBtn.addEventListener('click', function () {
+    addTaskBtn.addEventListener('click', () => createTask());
+
+    //將整個新增全新li的函式直接命名為createTask，上面的格式也跟著更改
+    function createTask() {
         // 1.新增新的element，屬於li
         const li = document.createElement('li');
 
-        // 2.新增input，將屬性設定成checkbox，並且讓它出現在我們自己新增的li前方
+        // 2.新增input，將屬性設定成checkbox，並且新增在我們新增的li前方
         const input = document.createElement('input');
         input.type = 'checkbox';
         li.prepend(input);
@@ -61,6 +64,43 @@
         newTaskInput.value = '';
         // 6.輸入完後把我們新增的整個li加進ul的後方
         taskList.append(li);
-    })
+    }
 
+
+
+    function applyFilter(filter) {
+        // 先選取要進行操作的部分，要進行判斷的是input裡的checkbox，所以直接將li分類中的input選起來
+        const checkboxes = document.querySelectorAll('li input');
+        // 用for of 走過所有checkbox
+        for (let checkbox of checkboxes) {
+            // 用isChecked儲存各個checkbox的狀態是否是已選取
+            const isChecked = checkbox.checked;
+            if (filter === 'all') {
+                // 如果篩選器是全部，讓所有li以list-item方式顯現，如果用block顯示li前面的黑點會消失
+                checkbox.parentNode.style.display = 'list-item';
+            } else if (filter === 'active') {
+                // 如果篩選器是未完成，讓有勾選checkbox的li消失，沒有勾選的li以list-item顯示
+                checkbox.parentNode.style.display = isChecked ? 'none' : 'list-item';
+            } else if (filter === 'completed') {
+                // 如果篩選器是已完成，讓有勾選checkbox的li以list-item顯示，沒有勾選checkbox的li消失
+                checkbox.parentNode.style.display = isChecked ? 'list-item' : 'none';
+            }
+        }
+    }
+
+    // 在各個篩選器新增click互動，原本的function位置為了不要重複打，用()=>替代
+    allFilter.addEventListener('click', () => applyFilter('all'));
+    activeFilter.addEventListener('click', () => applyFilter('active'));
+    completedFilter.addEventListener('click', () => applyFilter('completed'));
+
+    // keydown是用來追蹤使用者按了哪個鍵
+    newTaskInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            // 首先要先將用來新增li的函式命名為createTask方便呼叫，而追蹤到使用者按下enter鍵時去執行整個createTask
+            createTask();
+        } else if (event.key === 'Escape') {
+            // 如果偵測到使用者按下esc，就清空整個input.value
+            newTaskInput.value = '';
+        }
+    })
 </script>
