@@ -1,0 +1,66 @@
+<div>
+    <input type="text" id="newTaskInput" placeholder="請輸入新的 task" />
+    <button id="addTaskBtn">Add</button>
+</div>
+<ul id="taskList">
+    <!-- 這裡的li是參考用<li>
+        <input type="checkbox">
+        <span>task content</span>
+        <button>編輯</button>
+        <button>刪除</button>
+    </li> -->
+</ul>
+<div>
+    <button id="allFilter">全部</button>
+    <button id="activeFilter">未完成</button>
+    <button id="completedFilter">完成</button>
+</div>
+<br>
+<div>剩餘任務: <span id="tasksLeftCounter">0</span></div>
+<button id="clearAllBtn">清除全部</button>
+
+<script>
+    addTaskBtn.addEventListener('click', function () {
+        // 1.新增新的element，屬於li
+        const li = document.createElement('li');
+
+        // 2.新增input，將屬性設定成checkbox，並且讓它出現在我們自己新增的li前方
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        li.prepend(input);
+
+        // 3.新增span，span裡面的內容取決於我們在input裡輸入了什麼，讓span出現在我們自己新增的li後方
+        const span = document.createElement('span');
+        span.innerText = newTaskInput.value;
+        li.append(span);
+
+        // 4.新增兩個element，都是button，並且讓它出現在我們自己新增的li後方
+        const editB = document.createElement('button');
+        editB.innerText = '編輯';
+        li.append(editB);
+
+        const deleteB = document.createElement('button');
+        deleteB.innerText = '刪除';
+        li.append(deleteB);
+        // 7.新增刪除鍵的功能，在點擊後把整行li刪掉
+        deleteB.addEventListener('click', function () {
+            this.parentNode.remove();
+            // li.remove(); 使用li.remove也可以成功執行，但是使用this.parentNode會更精確的指向要刪掉該刪除紐所在的li
+        })
+
+        editB.addEventListener('click', function () {
+            // 新增一個newSpan來儲存要被更改的內容，window.prompt的window可省略
+            const newSpan = window.prompt('編輯內容:');
+            // 判斷我們是否有輸入內容，有的話就更改編輯紐前一個位置的innerText
+            if (newSpan !== '') {
+                this.previousSibling.innerText = newSpan;
+            }
+        })
+
+        // 5.在輸入完成後把input欄清空
+        newTaskInput.value = '';
+        // 6.輸入完後把我們新增的整個li加進ul的後方
+        taskList.append(li);
+    })
+
+</script>
