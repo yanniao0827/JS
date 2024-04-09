@@ -146,7 +146,7 @@ function countPapaya(fruits) {
 }
 
 // 2.建立一個陣列
-countPapaya(['Orange', 'Apple', 'Papaya', 'Kiwi', 'Papaya']);
+let result = countPapaya(['Orange', 'Apple', 'Papaya', 'Kiwi', 'Papaya']);
 // 7.列出結果
 console.log(result);
 

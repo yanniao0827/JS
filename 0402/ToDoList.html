@@ -49,7 +49,12 @@
         })
 
         editB.addEventListener('click', function () {
-            this.previousSibling.innerText = input.type = '';
+            // 新增一個newSpan來儲存要被更改的內容，window.prompt的window可省略
+            const newSpan = window.prompt('編輯內容:');
+            // 判斷我們是否有輸入內容，有的話就更改編輯紐前一個位置的innerText
+            if (newSpan !== '') {
+                this.previousSibling.innerText = newSpan;
+            }
         })
 
         // 5.在輸入完成後把input欄清空
